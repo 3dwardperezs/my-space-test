@@ -1,30 +1,22 @@
 {
-  "name": "my-space-test",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "my-astro-project",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "gh-pages -d dist"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.1",
+    "astro": "^2.0.0",
+    "@astrojs/svelte": "^1.0.0",
     "@astrojs/netlify": "^1.0.0",
-    "@astrojs/svelte": "^5.7.0",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.13.1",
-    "svelte": "^4.2.18",
-    "typescript": "^5.5.4"
-  },
-  "resolutions": {
-  "pnpm": "^7.0.0",
-  "sharp": "^0.30.0"
+    "svelte": "^3.0.0",
+    "tailwindcss": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^8.0.0",
-    "prettier": "^2.0.0"
+    "prettier": "^2.0.0",
+    "autoprefixer": "^10.0.0",
+    "postcss": "^8.0.0"
   }
 }
