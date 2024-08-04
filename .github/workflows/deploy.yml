@@ -1,40 +1,31 @@
-name: Deploy Astro to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches:
+      - main  # or the branch you are deploying from
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20' # Specify the Node.js version
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  # or the version you are using
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: '7.x' # Specify the pnpm version
+    - name: Install dependencies
+      run: npm install
 
-      - name: Install dependencies
-        run: pnpm install
+    - name: Build project
+      run: npm run build
 
-      - name: Build the Astro project
-        run: pnpm build
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-        id: deployment
-        with:
-          path: ./dist # Path to the built site
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist  # The directory where your built files are located
